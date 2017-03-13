@@ -12,7 +12,10 @@ export const webRequestAction = (url, config) => {
       SHOOTS_AUTH_TOKEN: authToken
     };
 
-    return $.ajax(url, {
+    const webHost = "https://shoots-staging.herokuapp.com"
+    const fullUrl = webHost + url;
+
+    return $.ajax(fullUrl, {
       method: config.method,
       headers: headers,
       data: config.data,
