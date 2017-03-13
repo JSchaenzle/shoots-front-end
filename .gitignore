@@ -1,0 +1,10 @@
+*.db
+*.sqlite3
+.bundle/*
+log/*
+*.swp
+*.swo
+.env
+node_modules
+lib/app/public/app.js
+
