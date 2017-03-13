@@ -19,6 +19,7 @@
     "npm-run-all": "^4.0.2",
     "react-scripts": "0.9.3"
   },
+  "proxy": "https://shoots-staging.herokuapp.com",
   "scripts": {
     "build-css": "node-sass src/ -o src/styles/generated/",
     "watch-css": "yarn run build-css && node-sass src/ -o src/styles/generated/ --watch --recursive",
