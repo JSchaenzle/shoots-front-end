@@ -12,8 +12,10 @@ export const webRequestAction = (url, config) => {
       SHOOTS_AUTH_TOKEN: authToken
     };
 
-    const webHost = "https://shoots-staging.herokuapp.com"
+    const webHost = "https://kyajjahqj1.execute-api.us-west-2.amazonaws.com/Test1"
     const fullUrl = webHost + url;
+
+    console.log("Attempting to make request with body:", config.data);
 
     return $.ajax(fullUrl, {
       method: config.method,

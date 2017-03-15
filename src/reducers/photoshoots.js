@@ -15,7 +15,7 @@ import update from 'immutability-helper';
 
 const initialState = {
   retrieving: false,
-  usersPhotoshoots: {}
+  usersPhotoshoots: {} // map of userId -> [shoots]
 };
 
 const photoshoots = (state = initialState, action) => {
@@ -29,7 +29,7 @@ const photoshoots = (state = initialState, action) => {
 
     case ADD_PHOTOSHOOT_SUCCESS:
       // Set or append based on whether the array exists or not
-      let operation = (state.usersPhotoshoots[action.payload.userId] === null) ?
+      let operation = !state.usersPhotoshoots[action.payload.userId] ?
         {$set: [action.payload.photoshoot]} : {$push: [action.payload.photoshoot]};
       return update(state, {
         retrieving: {$set: false},
