@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import moment from 'moment';
 
 export class Shoots extends React.Component {
 
@@ -15,10 +16,11 @@ export class Shoots extends React.Component {
 
   render() {
     var photoshoots = this.props.photoshoots.reduce((memo, value) => {
+      const dateStr = moment.utc(value.date).format('MMMM Do, YYYY'); 
       var shootRow = (
         <tr onClick={this.handleRowSelected(value.id)} key={value.id}>
           <td>{value.name}</td>
-          <td>{value.date}</td>
+          <td>{dateStr}</td>
         </tr>
       );
       if (value.completed) {

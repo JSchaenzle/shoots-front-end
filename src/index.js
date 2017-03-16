@@ -28,8 +28,10 @@ import shootsApp from './reducers/reducers.js';
 import App from './App.jsx';
 import {requestRetrieveAllPhotoshoots} from "./actions/photoshootActions.js";
 
-require('./styles/milligram/milligram.min.css');
-import './styles/generated/styles/main.css';
+import './styles/milligram.min.css';
+import './styles/main.css';
+import './styles/navigation.css';
+import './styles/react-datetime.css';
 
 const loggerMiddleware = createLogger();
 

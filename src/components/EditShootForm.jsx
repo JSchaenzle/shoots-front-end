@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 export default class EditShootForm extends React.Component {
 
@@ -18,19 +19,21 @@ export default class EditShootForm extends React.Component {
   }
 
   formattedDate() {
-    console.log("Formatting date to render");
-    let date = new Date(this.props.date);
-    var day = ("0" + date.getDate()).slice(-2);
-    var month = ("0" + (date.getMonth() + 1)).slice(-2);
-    let result = date.getFullYear()+"-"+(month)+"-"+(day);
+    console.log("Formatting date to render", this.props.date);
+    let date = moment.utc(this.props.date);
+    let result = date.format("YYYY-MM-DD");
+    // let date = new Date(this.props.date);
+    // var day = ("0" + date.getDate()).slice(-2);
+    // var month = ("0" + (date.getMonth() + 1)).slice(-2);
+    // let result = date.getFullYear()+"-"+(month)+"-"+(day);
     console.log("Formatted: ", result);
     return result;
   }
 
   handleDateChanged(event) {
     let date = event.target.valueAsDate;
-    console.log("Date", date);
-    let dateStr = date.toISOString();
+    console.log("Date", event.target);
+    let dateStr = moment(date).utc().format();
     console.log("DateStr", dateStr);
     this.props.onDetailChanged({date: dateStr});
   }
@@ -54,7 +57,6 @@ export default class EditShootForm extends React.Component {
             <input type="text" value={this.props.name} onChange={this.sendChangedDetail("name")} disabled={this.props.completed}></input>
           </label>
         </section>
-
         <section>
           <label>
             Shoot Date:
