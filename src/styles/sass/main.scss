@@ -45,6 +45,11 @@ body {
   font-weight: bold;
 }
 
+input[type=submit] {
+  // Without this all of the input "buttons" look like pills.
+  -webkit-appearance: none;
+}
+
 input[type=date] {
   display: block;
   border-radius: 5px;
@@ -53,6 +58,7 @@ input[type=date] {
   box-shadow: none;
   width: 100%;
   height: 3.8rem;
+  line-height: 3.8rem;
 
   border-top-color: rgb(209, 209, 209);
   border-top-style: solid;
