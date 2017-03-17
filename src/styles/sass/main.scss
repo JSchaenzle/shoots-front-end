@@ -2,7 +2,6 @@ $brand-primary: rgba(109, 162, 150, 0.59);
 $brand-secondary: rgba(235, 160, 15, 0.85);
 
 html {
-  font-size: 10px;
   font-family: sans-serif;
   font-variant: small-caps;
 }
@@ -45,13 +44,31 @@ body {
   font-weight: bold;
 }
 
+input{
+  font-size: 13pt;
+  &:focus{
+    // This stops ios from zooming in when an input is focused
+    font-size: 16pt;
+  }
+}
+
+input[type=date],
 input[type=submit] {
   // Without this all of the input "buttons" look like pills.
   -webkit-appearance: none;
 }
 
+input[type=checkbox] {
+  // -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  display: inline-block;
+  margin-bottom: 0.2em;
+  margin-left: 0.5em;
+}
+
 input[type=date] {
-  display: block;
   border-radius: 5px;
   font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   padding: 0.6rem 1.0rem;

@@ -92,7 +92,7 @@ export default class EditShootForm extends React.Component {
 
         <section>
           <label>
-            Completed:
+            Shoot Completed:
             <input type="checkbox" checked={this.props.completed} onChange={this.handleCompletedChanged}></input>
           </label>
         </section>
