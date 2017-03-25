@@ -2,6 +2,15 @@ import $ from 'jquery';
 import {browserHistory} from 'react-router';
 import {wrapError} from '../utils/webRequestErrorHelper.js';
 
+const apiHost = () => {
+  if(process.env.NODE_ENV === 'development') {
+    return ""; // Let the proxy configuration redirect to our backend
+               // which will also take care of CORS issues!
+  } else {
+    return "https://kyajjahqj1.execute-api.us-west-2.amazonaws.com/Test1";
+  }
+};
+
 export const webRequestAction = (url, config) => {
   return (dispatch, getState) => {
     dispatch(config.preRequest());
@@ -12,8 +21,7 @@ export const webRequestAction = (url, config) => {
       SHOOTS_AUTH_TOKEN: authToken
     };
 
-    const webHost = "https://kyajjahqj1.execute-api.us-west-2.amazonaws.com/Test1"
-    const fullUrl = webHost + url;
+    const fullUrl = apiHost() + url;
 
     console.log("Attempting to make request with body:", config.data);
 

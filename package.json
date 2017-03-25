@@ -20,14 +20,14 @@
     "npm-run-all": "^4.0.2",
     "react-scripts": "0.9.3"
   },
-  "proxy": "https://shoots-staging.herokuapp.com",
+  "proxy": "http://localhost:9292",
   "scripts": {
     "build-css": "node-sass src/styles/sass -o src/styles/",
     "watch-css": "yarn run build-css && node-sass src/styles/sass -o src/styles/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "yarn run build-css && react-scripts build",
-    "test": "reacyarn-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
 }

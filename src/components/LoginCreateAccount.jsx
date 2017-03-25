@@ -12,15 +12,14 @@ export const LOGIN_MODE = "LOGIN";
 export const CREATE_MODE = "CREATE";
 
 const fieldValidations = (mode) => mode === CREATE_MODE ? [
-  ruleRunner("name", "Name", required),
-  ruleRunner("emailAddress", "Email Address", required),
-  ruleRunner("password1", "Password", required, minLength(6)),
-  ruleRunner("password2", "Password Confirmation", mustMatch("password1", "Password"))
-] : [
-  ruleRunner("emailAddress", "Email Address", required),
-  ruleRunner("password1", "Password", required, minLength(6))
-];
-
+    ruleRunner("name", "Name", required),
+    ruleRunner("emailAddress", "Email Address", required),
+    ruleRunner("password1", "Password", required, minLength(6)),
+    ruleRunner("password2", "Password Confirmation", mustMatch("password1", "Password"))
+  ] : [
+    ruleRunner("emailAddress", "Email Address", required),
+    ruleRunner("password1", "Password", required, minLength(6))
+  ];
 
 export default class LoginCreateAccount extends React.Component {
 

@@ -1,5 +1,6 @@
 $brand-primary: rgba(109, 162, 150, 0.59);
 $brand-secondary: rgba(235, 160, 15, 0.85);
+$dark-gray: rgba(72, 73, 84, 1);
 
 html {
   font-family: sans-serif;
@@ -33,15 +34,17 @@ body {
 }
 
 .server-error-message {
-  background-color: #FF5722;
-  padding: 10px;
-  margin:10px;
-  border-radius: 8px;
+  background-color: $dark-gray;
+  padding: 5px 10px;
+  margin: 10px 10px;
+  border-radius: 3px;
+  color: white;
+  text-align: center;
 
   font-variant: normal;
-  font-size: 14pt;
-  font-family: serif;
-  font-weight: bold;
+  font-size: 12pt;
+  // font-family: serif
+  font-weight: medium;
 }
 
 input{
