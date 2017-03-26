@@ -1,4 +1,4 @@
-$brand-primary: rgba(109, 162, 150, 0.59);
+$brand-primary: #d44309;
 $brand-secondary: rgba(235, 160, 15, 0.85);
 $dark-gray: rgba(72, 73, 84, 1);
 
@@ -47,11 +47,21 @@ body {
   font-weight: medium;
 }
 
-input{
+input[type=text],
+input[type=number],
+input[type=date],
+input[type=password]{
   font-size: 13pt;
   &:focus{
     // This stops ios from zooming in when an input is focused
     font-size: 16pt;
+  }
+}
+
+input[type=submit]{
+  &:focus{
+    background-color: $brand-primary;
+    border-color: $brand-primary;
   }
 }
 

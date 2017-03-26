@@ -32,10 +32,20 @@ body {
   font-size: 12pt;
   font-weight: medium; }
 
-input {
+input[type=text],
+input[type=number],
+input[type=date],
+input[type=password] {
   font-size: 13pt; }
-  input:focus {
+  input[type=text]:focus,
+  input[type=number]:focus,
+  input[type=date]:focus,
+  input[type=password]:focus {
     font-size: 16pt; }
+
+input[type=submit]:focus {
+  background-color: #d44309;
+  border-color: #d44309; }
 
 input[type=date],
 input[type=submit] {
