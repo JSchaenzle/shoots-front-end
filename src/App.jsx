@@ -1,11 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import {browserHistory} from 'react-router';
+import {logOut} from './actions/accountActions';
 
-export default class App extends React.Component {
+const createHandlers = function(dispatch) {
+  return {
+    handleLogOut: () => {
+      dispatch(logOut());
+      browserHistory.push('/account-access')
+    }
+  };
+};
 
-  handleLogOut() {
-    browserHistory.push("/account-access");
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handlers = createHandlers(this.props.dispatch);
   }
 
   render() {
@@ -14,7 +26,7 @@ export default class App extends React.Component {
         <nav className="navigation">
           <div className="container">
             <a className="navigation-title">Shootz</a>
-            <input id="logout-button" className="button-outline" type='submit' value="Log out" onClick={this.handleLogOut} ></input>
+            <input id="logout-button" className="button-outline" type='submit' value="Log out" onClick={this.handlers.handleLogOut} ></input>
           </div>
           <div className="navigation-list">
             <ul >
@@ -42,4 +54,6 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default connect()(App);
 

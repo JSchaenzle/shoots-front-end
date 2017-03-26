@@ -5,6 +5,7 @@ import {
   LOG_IN_START,
   LOG_IN_SUCCESS,
   LOG_IN_ERROR,
+  LOG_OUT,
   CLEAR_LOG_IN_CREATE_ACCOUNT_SERVER_ERROR
 } from '../actions/actionTypes.js';
 import update from 'immutability-helper';
@@ -36,6 +37,11 @@ const accounts = (state = initialState, action) => {
     case LOG_IN_ERROR:
       return update(state, {
         logInCreateAccountServerError: {$set: action.payload}
+      });
+
+    case LOG_OUT:
+      return update(state, {
+        activeSession: {$set: {}} // Clear the active session
       });
 
     case CLEAR_LOG_IN_CREATE_ACCOUNT_SERVER_ERROR:

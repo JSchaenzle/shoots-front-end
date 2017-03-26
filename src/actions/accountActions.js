@@ -5,6 +5,7 @@ import {
   LOG_IN_START,
   LOG_IN_SUCCESS,
   LOG_IN_ERROR,
+  LOG_OUT,
   CLEAR_LOG_IN_CREATE_ACCOUNT_SERVER_ERROR
 } from './actionTypes.js';
 import { webRequestAction } from './webRequestAction.js';
@@ -54,6 +55,13 @@ const logInError = (errorInfo) => {
     payload: errorInfo
   };
 };
+
+export const logOut = () => {
+  return {
+    type: LOG_OUT,
+    payload: {}
+  };
+}
 
 const convertJsonToSession = (json) => {
   return Object.assign({}, json);
