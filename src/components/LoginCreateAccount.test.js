@@ -12,3 +12,7 @@ it('renders without crashing', () => {
     onLogIn={handleLogIn} 
     onClearErrors={handleClearErrors} />, div);
 });
+
+it('shows error if user enters invalid password', () => {
+
+});

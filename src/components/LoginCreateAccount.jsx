@@ -58,7 +58,11 @@ export default class LoginCreateAccount extends React.Component {
     this.setState({showErrors: true});
     if($.isEmptyObject(this.state.validationErrors) === false) return null;
 
-    const formData = Object.assign({}, this.state);
+    const formData = {
+      name: this.state.name,
+      emailAddress: this.state.emailAddress,
+      password: this.state.password1,
+    };
     delete formData.mode;
     if (this.state.mode === LOGIN_MODE) {
       return this.props.onLogIn(formData);
