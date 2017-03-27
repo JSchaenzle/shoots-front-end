@@ -5,7 +5,20 @@ import {
   requestSignIn,
   clearLogInCreateAccountServerError
 } from '../actions/accountActions.js';
+import { WebRequestData, required } from '../utils/WebRequestData.js';
+
 import { browserHistory } from 'react-router';
+
+const createAccountData = new WebRequestData([
+  new required("name"),
+  new required("emailAddress"),
+  new required("password", "password1")
+]);
+
+const logInData = new WebRequestData([
+  new required("emailAddress"),
+  new required("password", "password1")
+]);
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -16,15 +29,17 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onCreateAccount: (accountInfo) => {
+    onCreateAccount: (state) => {
       console.log("Requesting create account");
+      const accountInfo = createAccountData.extract(state);
       dispatch(requestCreateAccountAndSignIn(accountInfo))
         .then(() => browserHistory.push("/photoshoots"),
               (err) => console.log("Caught error: ", err));
     },
-    onLogIn: (credentials) => {
+    onLogIn: (state) => {
       console.log("Requesting log in now");
-      dispatch(requestSignIn(credentials))
+      const accountInfo = logInData.extract(state);
+      dispatch(requestSignIn(accountInfo))
         .then(() => {
           browserHistory.push("/photoshoots");
         }, (err) => {
