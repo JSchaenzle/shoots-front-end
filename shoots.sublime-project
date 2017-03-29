@@ -1,0 +1,23 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+      "folder_exclude_patterns" : [
+        "node_modules"
+      ],
+      "file_exclude_patterns" : [
+        "*.lock"
+      ]
+		},
+		{
+			"path": "/Users/jordanschaenzle/JTSolutions/shoots-2-web-api",
+      "folder_exclude_patterns" : [
+        "vendor"
+      ],
+      "file_exclude_patterns" : [
+        "*.lock"
+      ]
+		}
+	]
+}

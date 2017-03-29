@@ -49,7 +49,7 @@ let store = createStore(
     loggerMiddleware));
 
 
-let unsubscribe = store.subscribe(() => {
+store.subscribe(() => {
   let state = store.getState();
   localStorage.setItem("account", JSON.stringify(state.accounts));
 });

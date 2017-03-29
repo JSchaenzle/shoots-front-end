@@ -7,4 +7,5 @@ log/*
 .env
 node_modules
 lib/app/public/app.js
+*.sublime-workspace
 

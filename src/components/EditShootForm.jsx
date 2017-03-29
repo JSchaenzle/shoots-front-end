@@ -5,37 +5,34 @@ export default class EditShootForm extends React.Component {
 
   constructor() {
     super();
-    this.sendChangedDetail = this.sendChangedDetail.bind(this);
     this.formattedDate = this.formattedDate.bind(this);
     this.handleDateChanged = this.handleDateChanged.bind(this);
-    this.handlePriceChanged = this.handlePriceChanged.bind(this);
     this.handleCompletedChanged = this.handleCompletedChanged.bind(this);
   }
 
-  sendChangedDetail(detail) {
-    return (event) => {
-      this.props.onDetailChanged({[detail]: event.target.value});
-    }
-  }
-
   formattedDate() {
-    console.log("Formatting date to render", this.props.date);
     let date = moment.utc(this.props.date);
     let result = date.format("YYYY-MM-DD");
-    // let date = new Date(this.props.date);
-    // var day = ("0" + date.getDate()).slice(-2);
-    // var month = ("0" + (date.getMonth() + 1)).slice(-2);
-    // let result = date.getFullYear()+"-"+(month)+"-"+(day);
-    console.log("Formatted: ", result);
     return result;
   }
 
   handleDateChanged(event) {
     let date = event.target.valueAsDate;
-    console.log("Date", event.target);
     let dateStr = moment(date).utc().format();
-    console.log("DateStr", dateStr);
     this.props.onDetailChanged({date: dateStr});
+  }
+
+  numberDetailChangedHandler(stateKey) {
+    return (event) => {
+      let updatedValue = Number(event.target.value);
+      this.props.onDetailChanged({[stateKey]: updatedValue});
+    };
+  }
+
+  stringDetailChangedHandler(stateKey) {
+    return (event) => {
+      this.props.onDetailChanged({[stateKey]: event.target.value});
+    };
   }
 
   handlePriceChanged(event) {
@@ -54,7 +51,7 @@ export default class EditShootForm extends React.Component {
         <section>
           <label>
             Client Name:
-            <input type="text" value={this.props.name} onChange={this.sendChangedDetail("name")} disabled={this.props.completed}></input>
+            <input type="text" value={this.props.name} onChange={this.stringDetailChangedHandler("name")} disabled={this.props.completed}></input>
           </label>
         </section>
         <section>
@@ -66,27 +63,27 @@ export default class EditShootForm extends React.Component {
 
         <section>
           <label htmlFor="priceField">Price:</label>
-          <input type="number" id="priceField" value={this.props.price} onChange={this.handlePriceChanged} disabled={this.props.completed}></input>
+          <input type="number" id="priceField" value={this.props.price} onChange={this.numberDetailChangedHandler("price")} disabled={this.props.completed}></input>
         </section>
 
         <section>
           <label>
-            Miles Travelled:
-            <input type="number" value={this.props.miles} onChange={this.sendChangedDetail("miles")} disabled={this.props.completed}></input>
+            Miles Traveled:
+            <input type="number" value={this.props.milesTraveled} onChange={this.numberDetailChangedHandler("milesTraveled")} disabled={this.props.completed}></input>
           </label>
         </section>
 
         <section>
           <label>
             Time Shooting:
-            <input type="number" value={this.props.shootTimeMinutes} onChange={this.sendChangedDetail("shootTimeMinutes")} disabled={this.props.completed}></input>
+            <input type="number" value={this.props.hoursShooting} onChange={this.numberDetailChangedHandler("hoursShooting")} disabled={this.props.completed}></input>
           </label>
         </section>
 
         <section>
           <label>
             Time Editing:
-            <input type="number" value={this.props.editingTimeMinutes} onChange={this.sendChangedDetail("editingTimeMinutes")} disabled={this.props.completed}></input>
+            <input type="number" value={this.props.hoursEditing} onChange={this.numberDetailChangedHandler("hoursEditing")} disabled={this.props.completed}></input>
           </label>
         </section>
 
@@ -107,7 +104,10 @@ EditShootForm.propTypes = {
   name: React.PropTypes.string.isRequired,
   date: React.PropTypes.string.isRequired,
   price: React.PropTypes.number.isRequired,
-  completed: React.PropTypes.bool.isRequired
+  completed: React.PropTypes.bool.isRequired,
+  milesTraveled: React.PropTypes.number.isRequired,
+  hoursShooting: React.PropTypes.number.isRequired,
+  hoursEditing: React.PropTypes.number.isRequired,
 }
 
 EditShootForm.defaultProps = {
