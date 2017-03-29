@@ -8,6 +8,7 @@ const editShootData = new WebRequestData([
   new required("id"),
   new optional("name"),
   new optional("date"),
+  new optional("description"),
   new optional("price"),
   new optional("completed"),
   new optional("miles_traveled", "milesTraveled"),

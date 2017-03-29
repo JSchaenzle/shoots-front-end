@@ -7,6 +7,7 @@ import { WebRequestData, required, optional } from '../utils/WebRequestData.js';
 const newShootData = new WebRequestData([
   new required("name"),
   new required("date"),
+  new optional("description"),
   new optional("price"),
   new optional("completed"),
   new optional("miles_traveled", "milesTraveled"),

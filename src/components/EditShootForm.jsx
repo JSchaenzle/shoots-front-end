@@ -35,11 +35,6 @@ export default class EditShootForm extends React.Component {
     };
   }
 
-  handlePriceChanged(event) {
-    let price = Number(event.target.value);
-    this.props.onDetailChanged({price: price});
-  }
-
   handleCompletedChanged(event) {
     const completed = event.target.checked;
     this.props.onDetailChanged({completed: completed});
@@ -54,10 +49,18 @@ export default class EditShootForm extends React.Component {
             <input type="text" value={this.props.name} onChange={this.stringDetailChangedHandler("name")} disabled={this.props.completed}></input>
           </label>
         </section>
+
         <section>
           <label>
             Shoot Date:
             <input type="date" value={this.formattedDate()} onChange={this.handleDateChanged} disabled={this.props.completed}></input>
+          </label>
+        </section>
+
+        <section>
+          <label>
+            Description:
+            <input type="text" value={this.props.description} onChange={this.stringDetailChangedHandler("description")} disabled={this.props.completed}></input>
           </label>
         </section>
 
@@ -108,6 +111,7 @@ EditShootForm.propTypes = {
   milesTraveled: React.PropTypes.number.isRequired,
   hoursShooting: React.PropTypes.number.isRequired,
   hoursEditing: React.PropTypes.number.isRequired,
+  description: React.PropTypes.string.isRequired
 }
 
 EditShootForm.defaultProps = {

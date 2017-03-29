@@ -11,6 +11,10 @@ export default class NewShoot extends React.Component {
         name: "",
         date: this.tomorrow(),
         price: 0,
+        description: "",
+        milesTraveled: 0,
+        hoursShooting: 0,
+        hoursEditing: 0,
         completed: false
       }
     }
